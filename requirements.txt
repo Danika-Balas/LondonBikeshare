@@ -2,3 +2,9 @@ pytest
 pylint
 awsebcli
 flask
+flask_wtf
+wtforms
+wtforms
+numpy
+tensorflow.keras.models
+joblib
