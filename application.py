@@ -9,7 +9,7 @@ from flask_wtf import FlaskForm
 from wtforms import TextField,SubmitField
 #from wtforms.validators import NumberRange
 #import numpy as np 
-from tensorflow.keras.models import load_model
+from keras.models import load_model
 import joblib
 
 def return_prediction(model,scaler,sample_json):
