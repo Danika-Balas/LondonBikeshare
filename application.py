@@ -4,11 +4,11 @@
 Created on Wed Apr 28 16:44:05 2021
 @author: dbalas
 """
-from flask import Flask, render_template, session, redirect, url_for, session
+from flask import Flask, render_template, redirect, url_for, session
 from flask_wtf import FlaskForm
 from wtforms import TextField,SubmitField
-from wtforms.validators import NumberRange
-import numpy as np 
+#from wtforms.validators import NumberRange
+#import numpy as np 
 from tensorflow.keras.models import load_model
 import joblib
 
@@ -82,6 +82,5 @@ if __name__ == '__main__':
 
  
 ##### TO DO #####
-## Bug: Cannot update form with new user data due to redirect
 ## Create button to return to home screen to enter new data
 ## Impose limits on input fields--num, max, min
