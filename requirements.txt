@@ -6,5 +6,5 @@ flask_wtf
 wtforms
 wtforms
 numpy
-tensorflow.keras.models
+keras
 joblib
