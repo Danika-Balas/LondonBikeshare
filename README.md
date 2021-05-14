@@ -3,7 +3,11 @@ A. check out this repo and cd into it
 
 B. create a python virtualenv and source it and run make all
 
-python3 -m venv ~/.eb source ~/.eb/bin/activate make all
+python3 -m venv ~/.eb 
+
+source ~/.eb/bin/activate 
+
+make all
 
 Note, that awsebcli is installed via requirements
 
