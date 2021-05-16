@@ -15,5 +15,5 @@ numpy==1.19.5
 rsa==4.7.2
 scikit-learn==0.22.1
 scipy==1.5.4
-tensorflow==2.4.1
+--no-cache-dir tensorflow==2.4.1
 WTForms==2.3.3
