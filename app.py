@@ -5,12 +5,14 @@ Created on Wed Apr 28 16:44:05 2021
 
 @author: dbalas
 """
-from flask import Flask, render_template, redirect, url_for, session
+from dash_html_components.Data import Data
+from flask import Flask, render_template, redirect, url_for, session, request
 from flask_wtf import FlaskForm
+from plotly import validators
 from wtforms import TextField,SubmitField
-#from wtforms.validators import NumberRange
+from wtforms.validators import NumberRange, DataRequired
 #import numpy as np 
-from keras.models import load_model
+#from keras.models import load_model
 import joblib
 
 def return_prediction(model,scaler,sample_json):
@@ -23,28 +25,28 @@ def return_prediction(model,scaler,sample_json):
     bikes = [[temp,windspeed,month,hour]]
     bikes = scaler.transform(bikes)
     
-    # returns prediction as an array
-    bike_pred = model.predict(bikes)
+    # # returns prediction as an array
+    # bike_pred = model.predict(bikes)
  
-    return round(int(bike_pred[0][0]),0)
+    # return round(int(bike_pred[0][0]),0)
 
-    # # to use gradient boosted tree model---change prediction function as well
-    # GBT_pred = model.predict(bikes)
-    # return round(int(GBT_pred[0]),0)
+    # to use gradient boosted tree model---change prediction function as well
+    GBT_pred = model.predict(bikes)
+    return round(int(GBT_pred[0]),0)
 
 app = Flask(__name__)
 # Configure a secret SECRET_KEY
 app.config["SECRET_KEY"] = "22182"# Loading the model and scaler
-lb_model = load_model('LB_dnn_model.h5')
+#lb_model = load_model('LB_dnn_model.h5')
 lb_scaler = joblib.load('LB_scaler.pkl')
 
-#gbt_model = joblib.load('gbt.pkl')
+gbt_model = joblib.load('gbt.pkl')
 # Now create a WTForm Class
 class LBForm(FlaskForm):
-    temp = TextField('Temperature (degrees C)')
-    windspeed = TextField('Wind Speed (km/h)')
-    month = TextField('Month Number (enter January as 1, etc.)')
-    hour = TextField('Time of Day (hour)')
+    temp = TextField('Temperature (degrees C)', validators=[DataRequired()])
+    windspeed = TextField('Wind Speed (km/h)', validators=[DataRequired(message="Please enter value greater than or equal to 0")])
+    month = TextField('Month Number (enter January as 1, etc.)', validators=[DataRequired(message="Please enter value between 1 and 12")])
+    hour = TextField('Time of Day (hour)', validators=[DataRequired(message="Please enter value between 0 and 24")])
     submit = SubmitField('Analyze')
 
 @app.route('/', methods=['GET', 'POST'])
@@ -74,8 +76,15 @@ def prediction():
     content['month'] = float(session['month'])
     content['hour'] = float(session['hour'])
  
-    results = return_prediction(model=lb_model,scaler=lb_scaler,sample_json=content)
-    return render_template('prediction.html',results=results)
+    results = return_prediction(model=gbt_model,scaler=lb_scaler,sample_json=content)
+
+    if request.method == 'POST':
+        if request.form.get('newData') == 'VALUE1':
+            return render_template('home.html')
+        else: pass
+    elif request.method == 'GET':
+        return render_template('prediction.html', results=results)
+    # return render_template('prediction.html',results=results)
 
 if __name__ == '__main__':
     app.run(debug=True)
@@ -83,7 +92,6 @@ if __name__ == '__main__':
 
  
 ##### TO DO #####
-## Create button to return to home screen to enter new data
 ## Impose limits on input fields--num, max, min
 
  
