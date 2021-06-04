@@ -13,9 +13,10 @@ Note, that awsebcli is installed via requirements
 
 C. initial new eb app
 
-eb init -p python-3.7 flask-continuous-delivery --region us-east-1
+eb init -p python-3.7 flask-continuous-delivery --region us-east-2
 
-Optional eb init again to create ssh keys
+eb init 
+#to create ssh keys
 
 D. Create remote eb instance
 
