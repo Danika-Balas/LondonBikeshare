@@ -5,7 +5,7 @@ This web application can be used to predict usage of city bike shares in London 
 
 This [Jupyter notebook](LondonBikeshare_modelDev.ipynb) includes the code to develop the predictive model, including EDA, data processing, model training, and model evaluation.
 
-[Google Colab](LondonBikeshare_dl.ipynb) was also used to train a deep neural network on this data in order to explore using Tensorflow in AWS, but this kind of model is ill-suited for this dataset, and was not used in the final web application.
+[Google Colab](LondonBikeshare_DeepLearning.ipynb) was also used to train a deep neural network on this data in order to explore using Tensorflow in AWS, but this kind of model is ill-suited for this dataset, and was not used in the final web application.
 
 ## Web Application
 ### Enter data
@@ -16,6 +16,14 @@ This value is the predicted number bike share rides that will be initiated for a
 
 ## Developing the Model
 Data was use from ___
+
+Several exploratory data analysis techniques were used to understand the dataset and determine which variables would be the most effective to predict the count of bike share rides initiated (cnt).
+
+This scatterplot illustrates the relationship between humidity, hour of the day, and total bike share count per hour.
+(scatter)
+
+Correlation
+(heat map)
 ## Deploying to AWS
 A. Create Cloud9 env and keys for git
 A. check out this repo and cd into it
