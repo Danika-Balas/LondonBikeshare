@@ -1,5 +1,5 @@
 # Predicting Bike Share Usage in London
-URL: http://latest-londonbikeshare-env.eba-uyfumhmm.us-east-1.elasticbeanstalk.com/prediction
+URL: http://latest-londonbikeshare-env.eba-uyfumhmm.us-east-1.elasticbeanstalk.com/
 
 This web application can be used to predict usage of city bike shares in London based on weather, date, and time input data. It uses a Flask API and hosted on AWS. It uses a gradient boosted tree model.
 
