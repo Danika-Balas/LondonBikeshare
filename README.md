@@ -15,15 +15,19 @@ page 2
 This value is the predicted number bike share rides that will be initiated for a given hour in London.
 
 ## Developing the Model
-Data was use from ___
+Data was sourced from the [Transport for London](<https://cycling.data.tfl.gov.uk/>) open cycling data. This specific dataset was cleaned by Hristo Mavrodiev and can be downloaded [here](<https://www.kaggle.com/hmavrodiev/london-bike-sharing-dataset>).
 
 Several exploratory data analysis techniques were used to understand the dataset and determine which variables would be the most effective to predict the count of bike share rides initiated (cnt).
 
 This scatterplot illustrates the relationship between humidity, hour of the day, and total bike share count per hour.
-(scatter)
 
-Correlation
-(heat map)
+<img src="https://github.com/Danika-Balas/LondonBikeshare/blob/main/images/scatterplot.png" width="512" />
+
+The heatmap below shows the correlations between each variable.
+<img src="https://github.com/Danika-Balas/LondonBikeshare/blob/main/images/heatmap.png" width="512" />
+
+Tempfeel was not selected because it is not independent from temp. The variables **temp**, **windspeed**, **hour**, and **month** were selected as predictors for total hourly rides.
+
 ## Deploying to AWS
 A. Create Cloud9 env and keys for git
 A. check out this repo and cd into it
