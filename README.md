@@ -7,9 +7,11 @@ This [Jupyter notebook](LondonBikeshare_modelDev.ipynb) includes the code to dev
 
 ## Web Application
 ### Enter data
-page 1
+
+<img src="https://github.com/Danika-Balas/LondonBikeshare/blob/main/images/input_data.png" width="512" />
 ### Receive a prediction based on input data
-page 2
+<img src="https://github.com/Danika-Balas/LondonBikeshare/blob/main/images/prediction.png" width="512" />
+
 This value is the predicted number bike share rides that will be initiated for a given hour in London.
 
 ## Developing the Model
@@ -32,6 +34,10 @@ Tempfeel was not selected because it is not independent from temp. The variables
 
 
 A deep neural network was also trained on this data in [Google Colab](LondonBikeshare_DeepLearning.ipynb) in order to explore using Tensorflow in AWS, but this kind of model is ill-suited for this dataset, and was not used in the final web application.
+
+Flask was then used to develop a web application with a prediction API that could field new queries and return predictions from the gradient boosted tree model.
+
+Finally, the Flask web application was deployed to AWS using Elastic Beanstalk. CodeBuild was used to support a continuous delivery pipeline. Every time that a change is committed to this GitHub repo, it triggers a new build on AWS.
 
 ## Deploying locally
 1. Clone this repository
@@ -92,6 +98,6 @@ Create ssh keys (optional)
 ## References
 Deza, A., Gift, N. (2021, February). AWS Elastic Beanstalk continuous delivery with Flask video course. https://learning.oreilly.com/videos/aws-elastic-beanstalk/62022021VIDEOPAIML/
 
-Gupta, S. (2019, December 23). Deploying a deep learning model on Heroku using Flask and Python. https://towardsdatascience.com/deploying-a-deep-learning-model-on-heroku-using-flask-and-python-769431335f66
+Gupta, S. (2019, December 2). Deploying a machine learning model on the web using Flask and Python. https://medium.com/analytics-vidhya/deploying-a-machine-learning-model-on-web-using-flask-and-python-54b86c44e14a
 
 Mavrodiev, H. (2019, October 10). London bike sharing dataset. https://www.kaggle.com/hmavrodiev/london-bike-sharing-dataset
