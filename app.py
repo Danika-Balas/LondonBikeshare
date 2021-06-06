@@ -5,12 +5,10 @@ Created on Wed Apr 28 16:44:05 2021
 
 @author: dbalas
 """
-from dash_html_components.Data import Data
 from flask import Flask, render_template, redirect, url_for, session, request
 from flask_wtf import FlaskForm
-from plotly import validators
 from wtforms import TextField,SubmitField
-from wtforms.validators import NumberRange, DataRequired
+from wtforms.validators import DataRequired
 #import numpy as np 
 #from keras.models import load_model
 import joblib
