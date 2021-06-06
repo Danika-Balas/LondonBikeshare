@@ -1,5 +1,5 @@
-body            { font-family: sans-serif; background: #eee; color: #23252c;}
-a, h1, h2       { color: #0b2c97; }
+body            { font-family: sans-serif; background: rgb(238, 238, 238); color: #23252c;}
+a, h1, h2       { color: #1774ff; }
 h1, h2          { font-family: 'Roboto', sans-serif; margin: 0; }
 h1              { border-bottom: 2px solid #eee; }
 h2              { font-size: 1.2em; }
