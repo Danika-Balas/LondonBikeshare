@@ -5,8 +5,6 @@ This web application can be used to predict usage of city bike shares in London 
 
 This [Jupyter notebook](LondonBikeshare_modelDev.ipynb) includes the code to develop the predictive model, including EDA, data processing, model training, and model evaluation.
 
-[Google Colab](LondonBikeshare_DeepLearning.ipynb) was also used to train a deep neural network on this data in order to explore using Tensorflow in AWS, but this kind of model is ill-suited for this dataset, and was not used in the final web application.
-
 ## Web Application
 ### Enter data
 page 1
@@ -15,6 +13,8 @@ page 2
 This value is the predicted number bike share rides that will be initiated for a given hour in London.
 
 ## Developing the Model
+Code available [here](LondonBikeshare_modelDev.ipynb).
+
 Data was sourced from the [Transport for London](<https://cycling.data.tfl.gov.uk/>) open cycling data. This specific dataset was cleaned by Hristo Mavrodiev and can be downloaded [here](<https://www.kaggle.com/hmavrodiev/london-bike-sharing-dataset>).
 
 Several exploratory data analysis techniques were used to understand the dataset and determine which variables would be the most effective to predict the count of bike share rides initiated (cnt).
@@ -28,11 +28,42 @@ The heatmap below shows the correlations between each variable.
 
 Tempfeel was not selected because it is not independent from temp. The variables **temp**, **windspeed**, **hour**, and **month** were selected as predictors for total hourly rides.
 
-## Deploying to AWS
-A. Create Cloud9 env and keys for git
-A. check out this repo and cd into it
+[Gradient boosting regression](<https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html>) was used to train and compare several ensembles. The final predictive model was based on 5000 trees.
 
-B. create a python virtualenv and source it and run make all
+
+A deep neural network was also trained on this data in [Google Colab](LondonBikeshare_DeepLearning.ipynb) in order to explore using Tensorflow in AWS, but this kind of model is ill-suited for this dataset, and was not used in the final web application.
+
+## Deploying locally
+1. Clone this repository
+2. Create a Python virtualenv and install necessary dependencies
+
+`python3 -m venv ./.lb`
+
+`source ./.lb/bin/activate`
+
+`make all`
+
+3. Run Flask app
+
+`flask run`
+
+4. Open app on local server
+
+Go to http://127.0.0.1:5000/ to enter predictions
+
+## Deploying to AWS
+1. Create a new Cloud9 environment
+Use this command to set up public keys for environment
+
+`ssh-keygen -t rsa`
+
+Access key to copy it into GitHub for encrypted communication
+
+`cat ~/.ssh/id_rsa.pub`
+
+2. Clone this repository
+
+3. Create a Python virtualenv and install necessary dependencies
 
 `python3 -m venv ~/.eb`
 
@@ -42,21 +73,25 @@ B. create a python virtualenv and source it and run make all
 
 Note, that awsebcli is installed via requirements
 
-C. initial new eb app
+4. Initialize Elastic Beanstalk app
 
-`eb init -p python-3.7 flask-continuous-delivery --region us-east-2`
+`eb init -p python-3.7 flask-londonbikeshare --region us-east-2`
 
-To create ssh keys
+Create ssh keys (optional)
 
 `eb init`
 
+5. Create remote Elastic Beanstalk instance
 
-D. Create remote eb instance
-
-'eb create flask-continuous-delivery-env'
-
-## References
+`eb create flask-continuous-delivery-env`
 
 ## Future Directions
 * Add more validation requirements to Flask query fields, including minimum and maximum values
 * Train LSTM model in order to take advantage of time series data
+
+## References
+Deza, A., Gift, N. (2021, February). AWS Elastic Beanstalk continuous delivery with Flask video course. https://learning.oreilly.com/videos/aws-elastic-beanstalk/62022021VIDEOPAIML/
+
+Gupta, S. (2019, December 23). Deploying a deep learning model on Heroku using Flask and Python. https://towardsdatascience.com/deploying-a-deep-learning-model-on-heroku-using-flask-and-python-769431335f66
+
+Mavrodiev, H. (2019, October 10). London bike sharing dataset. https://www.kaggle.com/hmavrodiev/london-bike-sharing-dataset
