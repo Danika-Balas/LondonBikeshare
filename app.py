@@ -41,7 +41,7 @@ lb_scaler = joblib.load('LB_scaler.pkl')
 gbt_model = joblib.load('gbt.pkl')
 # Now create a WTForm Class
 class LBForm(FlaskForm):
-    temp = TextField('Temperature (degrees C)', validators=[DataRequired()])
+    temp = TextField('temperature (degrees C)', validators=[DataRequired()])
     windspeed = TextField('Wind Speed (km/h)', validators=[DataRequired(message="Please enter value greater than or equal to 0")])
     month = TextField('Month Number (enter January as 1, etc.)', validators=[DataRequired(message="Please enter value between 1 and 12")])
     hour = TextField('Time of Day (hour)', validators=[DataRequired(message="Please enter value between 0 and 24")])
