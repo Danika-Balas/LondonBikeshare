@@ -10,6 +10,6 @@ lint:
 
 deploy:
 	echo "Deploying app"
-	eb deploy flask-cd
+	eb deploy latest-londonbikeshare-env
 
 all: install lint test 
