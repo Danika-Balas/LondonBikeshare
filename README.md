@@ -10,6 +10,7 @@ This [Jupyter notebook](LondonBikeshare_modelDev.ipynb) includes the code to dev
 
 <img src="https://github.com/Danika-Balas/LondonBikeshare/blob/main/images/input_data.png" width="512" />
 ### Receive a prediction based on input data
+
 <img src="https://github.com/Danika-Balas/LondonBikeshare/blob/main/images/prediction.png" width="512" />
 
 This value is the predicted number bike share rides that will be initiated for a given hour in London.
