@@ -1,7 +1,7 @@
 # Predicting Bike Share Usage in London
 URL: http://latest-londonbikeshare-env.eba-uyfumhmm.us-east-1.elasticbeanstalk.com/
 
-This web application can be used to predict usage of city bike shares in London based on weather, date, and time input data. It uses a Flask API and hosted on AWS. It uses a gradient boosted tree model.
+This web application can be used to predict usage of city bike shares in London based on weather, date, and time input data. It uses a Flask API and is hosted on AWS. It uses a gradient boosted tree model.
 
 This [Jupyter notebook](LondonBikeshare_modelDev.ipynb) includes the code to develop the predictive model, including EDA, data processing, model training, and model evaluation.
 
@@ -9,16 +9,17 @@ This [Jupyter notebook](LondonBikeshare_modelDev.ipynb) includes the code to dev
 ### Enter data
 
 <img src="https://github.com/Danika-Balas/LondonBikeshare/blob/main/images/input_data.png" width="512" />
+
 ### Receive a prediction based on input data
 
 <img src="https://github.com/Danika-Balas/LondonBikeshare/blob/main/images/prediction.png" width="512" />
 
-This value is the predicted number bike share rides that will be initiated for a given hour in London.
+This value is the predicted number of bike share rides that will be initiated for a given hour in London.
 
 ## Developing the Model
 Code available [here](LondonBikeshare_modelDev.ipynb).
 
-Data was sourced from the [Transport for London](<https://cycling.data.tfl.gov.uk/>) open cycling data. This specific dataset was cleaned by Hristo Mavrodiev and can be downloaded [here](<https://www.kaggle.com/hmavrodiev/london-bike-sharing-dataset>).
+Data was sourced from [Transport for London](<https://cycling.data.tfl.gov.uk/>) open cycling data. This specific dataset was cleaned by Hristo Mavrodiev and can be downloaded [here](<https://www.kaggle.com/hmavrodiev/london-bike-sharing-dataset>).
 
 Several exploratory data analysis techniques were used to understand the dataset and determine which variables would be the most effective to predict the count of bike share rides initiated (cnt).
 
@@ -29,7 +30,7 @@ This scatterplot illustrates the relationship between humidity, hour of the day,
 The heatmap below shows the correlations between each variable.
 <img src="https://github.com/Danika-Balas/LondonBikeshare/blob/main/images/heatmap.png" width="512" />
 
-Tempfeel was not selected because it is not independent from temp. The variables **temp**, **windspeed**, **hour**, and **month** were selected as predictors for total hourly rides.
+The variables **temp**, **windspeed**, **hour**, and **month** were selected as predictors for total hourly rides because of their high absolute correlations with bike share count. Tempfeel was not selected because it is not independent from temp. 
 
 [Gradient boosting regression](<https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html>) was used to train and compare several ensembles. The final predictive model was based on 5000 trees.
 
